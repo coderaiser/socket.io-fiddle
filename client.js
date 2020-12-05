@@ -8,9 +8,14 @@ socket.on('connect', () => {
 
 socket.once('connect_error', (e) => {
     console.log('connect error', e.message);
-    socket.close();
-    server.close();
-    io.close();
+    
+    server.close(() => {
+        socket.close();
+        io.close(() => {
+            console.log('io closed');
+            console.log(process._getActiveHandles());
+        });
+    });
 });
 
 socket.on('disconnect', () => {
