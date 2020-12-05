@@ -10,7 +10,6 @@
     "socket.io-client": "~3.0.0"
   },
   "scripts": {
-    "start": "node server.js",
-    "client": "node client.js"
+    "start": "node client.js"
   }
 }
